@@ -1,0 +1,117 @@
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "9cbf8297-9274-4cc7-bd81-31e0caba4d93", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "24dca861-946b-4a70-9ae5-ececadbcfa3c", // The ID of your service instance.
+    onLoad: function(instance) { instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>I can write</title>
+    <link href="{{ url_for('static',filename='style.css') }}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+    
+<body>
+    
+<section class="sub-header">
+    <nav>
+        <a href="/"><img src="{{ url_for('static',filename='Images/R.png') }}"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="/testimonials/">TESTIMONIALS</a></li>
+                <li><a href="/about/">ABOUT</a></li>
+                <li><a href="/contact/">CONTACT US</a></li>
+            </ul>        
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <h1>Contact Us</h1>
+</section>
+
+<section class="location">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7331359915665!2d103.96298331373751!3d1.3363575619933872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da3cd9eaa85f71%3A0x848a00846edf675!2sIBM%20Place%202!5e0!3m2!1sen!2ssg!4v1662521178585!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+<section class="contact-us">
+    <div class="row">
+        <div class="contact-col">
+            <div>
+                <i class="fa fa-home"></i>
+                <span>
+                    <h5>Battery Road, ABC Plaza</h5>
+                    <p>Singapore 123456</p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <span>
+                    <h5>+65 12345678</h5>
+                    <p>Monday to Friday, 10am to 4.30pm</p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-envelope-o"></i>
+                <span>
+                    <h5>TigerMDsAssociation.com</h5>
+                    <p>Email us your feedback</p>
+                </span>
+            </div>
+        </div>
+    </div>
+        <br><br>
+        <div class="contact-col">
+            <form action="">
+                <input type="text" placeholder="Enter your name" required>
+                <input type="email" placeholder="Enter Email Address" required>
+                <input type="text" placeholder="Enter your subject" required>
+                <textarea rows="8" placeholder="Message" required></textarea>
+                <button type="submit" class="mt-3">Send Message</button>
+            </form>
+        
+        </div>
+</section>
+       
+<!---- footer --->
+<section class="footer">
+    <h4>About Us</h4>
+    <p>Our tool is AI based. We hope you and your toddlers can have hours of fun using <mark class="red">I can write</mark> on your journey to legible number handwriting.<br>Have Fun and Learn!</p>
+    <br>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>            
+    </div>
+    <p>Made with <i class="fa fa-heart"></i> by Tiger MDs Association</p>
+</section>
+    
+<!------ JavaScript for Toggle Menu  ---------->
+<script>
+    
+    var navLinks = document.getElementById("navLinks");
+    
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+     function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+    
+</script>    
+    
+</body>
+</html>

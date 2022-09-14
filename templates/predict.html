@@ -1,0 +1,28 @@
+<!doctype html>
+<html> 
+<head>
+    <title>I can write</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <img src="{{ url_for('static',filename='Images/Rabbit.png') }}" style="margin:0; padding:0; height:100vh; width:100%; background-position:center;
+    background-size:cover; position:relative;">
+<div id="maintext" 
+    style="position:absolute; margin:auto; width:700px; height:300px; text-align:center; top:0; bottom: 0; left: 0; right: 0;">
+  <h1 class="text-dark mb-5"> Here's my guess: </h1>
+  <table class="table-bordered text-dark" style="width:100%">
+  <tr>
+    <th>Number Written</th>
+    <th>My Guess</th>
+    <th>Comment</th>
+  </tr>
+  <tr>
+    <td>{{ predictions.actual }}</td>
+    <td>{{ predictions.digit }}</td>
+    <td>{{ predictions.comment }}</td>
+  </tr>
+  </table> <a href="{{ url_for('main_page') }}"><button class="button mt-3">New snapshot?</button></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "9cbf8297-9274-4cc7-bd81-31e0caba4d93", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "24dca861-946b-4a70-9ae5-ececadbcfa3c", // The ID of your service instance.
+    onLoad: function(instance) { instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>I can write</title>
+    <link type="text/css" rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    
+<section class="header">
+       <nav>
+        <img src="static/Images/R.png">
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="">TESTIMONIALS</a></li>
+                <li><a href="">ABOUT</a></li>
+            </ul>        
+        </div>
+           <br>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+<div class="text-box1">
+    <br><br>
+    <h1>Hi there! Let's practice writing numbers.</h1>
+    <br>
+    <h4>Ready? Grab a black pencil and a piece of plain white paper.<br>Write and Snap a shot at the NUMBER!</h4>
+    <br>
+    <p>(The snapshot must be less than 500kb in size)</p>
+    <form method=post enctype=multipart/form-data>
+    <p>
+        <br>
+        <br>
+        <a href="index.html"><input type=file  name=file></a>
+        <input type=submit  value=Upload> 
+    </p>
+    </form> 
+</div>
+</section>
+
+    
+<!---- footer --->
+    
+<section class="footer">
+    <h4>About us</h4>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+    <br>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>      
+        <i class="fa fa-linkedin"></i>  
+    </div>
+    <p>Made with <i class="fa fa-heart"></i> by Tiger MDs Association</p>
+</section>
+
+<!------ JavaScript for Toggle Menu  ---------->
+<script>
+    
+    var navLinks = document.getElementById("navLinks");
+    
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+     function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+    
+</script>    
+    
+</body>
+</html>
