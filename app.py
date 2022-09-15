@@ -27,12 +27,37 @@ def main_page():
         return redirect(url_for('prediction', filename=filename))
     return render_template('index.html')
 
+def crop_square(img, size, interpolation=cv2.INTER_AREA):
+    h, w = img.shape[:2]
+    min_size = np.amin([h,w])
+    # Centralize and crop
+    crop_img = img[int(h/2-(min_size/2)):int(h/2+(min_size/2)), int(w/2-(min_size/2)):int(w/2+(min_size/2))]
+    resized = cv2.resize(crop_img, (size, size), interpolation=interpolation)
+
+    return resized
+
 @app.route('/prediction/<filename>') 
 def prediction(filename):
     number = re.search(r"\d",filename)
     actual = number.group()
-    my_img = plt.imread(os.path.join('uploads', filename))
-    img = resize(my_img, (80, 80, 1))
+    mypath = os.path.join('uploads', filename)
+    #read image as grayscale
+    img_gray = cv2.imread(mypath, cv2.IMREAD_GRAYSCALE)
+    img_gray = cv2.resize(img_gray, (80,80), interpolation = cv2.INTER_NEAREST)
+    # define a threshold, 128 is the middle of black and white in grayscale
+    thresh = 128
+    # threshold the image
+    img_bin = cv2.threshold(img_gray, thresh, 255, cv2.THRESH_BINARY)[1]
+    img_bin = np.invert(img_bin)
+    img_bin = img_bin.astype('float32')
+    crop_rows = img_bin[~np.all(img_bin==0, axis=1), :]
+    cropped_image = crop_rows[:, ~np.all(crop_rows==0, axis=0)]
+    top, bottom, left, right = [10]*4
+    img = cv2.copyMakeBorder(cropped_image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=[0,0,0])
+    img = crop_square(img, 64, cv2.INTER_AREA)
+    img = cv2.threshold(img, thresh, 255, cv2.THRESH_BINARY)[1]
+    img_re = img.reshape(64,64,1)
+    img_re /= 255
     model.run_eagerly=True
     probabilities = model.predict(np.array( [img,] ))[0,:]
     print(probabilities)
